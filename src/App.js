@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import LoginPage from './components/LoginPage ';
+import RegistrationPage from './components/RegistrationPage ';
+import AccountPage from './components/AccountPage ';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [users, setUsers] = useState([]);
+    const [currentUser, setCurrentUser] = useState(null);
+
+    //passing this function with its props
+    const handleLogin = (username, password) => {
+        const user = users.find(user => user.username === username && user.password === password);
+        if (user) {
+            setCurrentUser(user);
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    //passing this function with its props
+    const handleRegister = (username, password) => {
+        const userExists = users.some(user => user.username === username);
+        if (!userExists) {
+            const newUser = { username, password, image: '', address: '', phone: '' };
+            setUsers([...users, newUser]);
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    //passing this function with its props
+    const handleUpdate = (updatedUser) => {
+        setUsers(users.map(user => (user.username === updatedUser.username ? updatedUser : user)));
+        setCurrentUser(updatedUser);
+    };
+
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+                    <Route path="/register" element={<RegistrationPage onRegister={handleRegister} />} />
+                    <Route path="/account" element={currentUser ? <AccountPage user={currentUser} onUpdate={handleUpdate} /> : <Navigate to="/login" />} />
+                    <Route path="/" element={<Navigate to="/login" />} />
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
