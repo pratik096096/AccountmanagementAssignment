@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/AccountmanagementAssignment/static/css/main.ff02f4b5.css",
+    "main.js": "/AccountmanagementAssignment/static/js/main.6803e994.js",
+    "static/js/453.8ea6dfb1.chunk.js": "/AccountmanagementAssignment/static/js/453.8ea6dfb1.chunk.js",
+    "index.html": "/AccountmanagementAssignment/index.html",
+    "main.ff02f4b5.css.map": "/AccountmanagementAssignment/static/css/main.ff02f4b5.css.map",
+    "main.6803e994.js.map": "/AccountmanagementAssignment/static/js/main.6803e994.js.map",
+    "453.8ea6dfb1.chunk.js.map": "/AccountmanagementAssignment/static/js/453.8ea6dfb1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff02f4b5.css",
+    "static/js/main.6803e994.js"
+  ]
+}
