@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter as Route, Routes, Navigate, HashRouter } from 'react-router-dom';
 import LoginPage from './components/LoginPage ';
 import RegistrationPage from './components/RegistrationPage ';
 import AccountPage from './components/AccountPage ';
@@ -38,7 +38,7 @@ const App = () => {
     };
 
     return (
-        <Router>
+        <HashRouter>
             <div className="App">
                 <Routes>
                     <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
@@ -47,7 +47,7 @@ const App = () => {
                     <Route path="/" element={<Navigate to="/login" />} />
                 </Routes>
             </div>
-        </Router>
+        </HashRouter>
     );
 };
 
